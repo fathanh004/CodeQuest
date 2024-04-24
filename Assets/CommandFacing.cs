@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CommandFacing : MonoBehaviour
+public class CommandFacing : Command
 {
     public string direction;
 
     public TMP_Dropdown dropdown;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         dropdown = GetComponentInChildren<TMP_Dropdown>();
     }
 
