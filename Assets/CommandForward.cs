@@ -14,4 +14,12 @@ public class CommandForward : Command
         labelText = GetComponentInChildren<TMP_Text>();
         labelText.text = "Maju " + step + " langkah";
     }
+
+    public override void Execute()
+    {
+        StartCoroutine(DoneExecuting());
+        playerController.MoveForward(step);
+    }
+
+
 }

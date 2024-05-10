@@ -17,8 +17,14 @@ public class CommandFacing : Command
         dropdown = GetComponentInChildren<TMP_Dropdown>();
     }
 
+    private void Start()
+    {
+        direction = "kanan";
+    }
+
     public void OnChange()
     {
+        Debug.Log(dropdown.options[dropdown.value].text);
         if (dropdown.options[dropdown.value].text == "Kanan")
         {
             direction = "kanan";
@@ -27,5 +33,11 @@ public class CommandFacing : Command
         {
             direction = "kiri";
         }
+    }
+
+    public override void Execute()
+    {
+        StartCoroutine(DoneExecuting());
+        playerController.FacingTowards(direction);
     }
 }
