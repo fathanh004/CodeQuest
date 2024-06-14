@@ -25,6 +25,7 @@ public class CommandStart : Command
 
     public void StartAllCommand()
     {
+        UIManager.Instance.HidePanel();
         commandList.Clear();
         foreach (Transform child in slot.transform)
         {
@@ -41,6 +42,10 @@ public class CommandStart : Command
         if (currentIndex < commandList.Count)
         {
             commandList[currentIndex].Execute();
+        }
+        else
+        {
+            UIManager.Instance.ShowPanel();
         }
         currentIndex++;
     }
