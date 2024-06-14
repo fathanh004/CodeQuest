@@ -37,7 +37,6 @@ public class CommandFacing : Command
 
     public override void Execute()
     {
-        StartCoroutine(DoneExecuting());
         playerController.FacingTowards(direction);
     }
 }

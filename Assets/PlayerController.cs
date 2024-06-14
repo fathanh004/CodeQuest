@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
 
-    // Kecepatan gerakan pemain
     [SerializeField]
-    private float moveSpeed = 5f;
+    private float duration;
 
     Vector3 initialPosition;
     Quaternion initialRotation;
+    bool isWalking = false;
+
+    public UnityEvent onDoneExecuting;
 
     private void Awake()
     {
@@ -20,12 +25,31 @@ public class PlayerController : MonoBehaviour
         initialRotation = transform.rotation;
     }
 
+    private void Start()
+    {
+        onDoneExecuting.RemoveAllListeners();
+        onDoneExecuting.AddListener(() =>
+        {
+            CommandStart.Instance.ExecuteNextCommand();
+            Debug.Log("Done executing");
+        });
+    }
+
     private void Update()
     {
-        // Tambahkan input atau kondisi untuk memicu gerakan maju
         if (Input.GetKeyDown(KeyCode.W))
         {
-            MoveForward(1f); // Pemanggilan MoveForward dengan jarak 1
+            MoveForward();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            FacingTowards("kiri");
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            FacingTowards("kanan");
         }
     }
 
@@ -34,38 +58,42 @@ public class PlayerController : MonoBehaviour
     {
         transform.SetPositionAndRotation(initialPosition, initialRotation);
     }
-   
 
-    // Metode untuk gerakan maju dan animasi
-    public void MoveForward(float distance)
+    public void MoveForward()
     {
-        // Atur animator ke kecepatan 1 (atau sesuai kebutuhan)
-        animator.SetFloat("Speed", 1f);
-
-        // Dapatkan arah hadapan pemain
-        Vector3 forward = transform.forward;
-
-        // Tentukan posisi akhir berdasarkan jarak yang diinginkan
-        Vector3 targetPosition = transform.position + forward * distance;
-
-        // Gerakkan pemain ke depan berdasarkan kecepatan dan waktu
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPosition,
-            moveSpeed * Time.deltaTime
-        );
+        if (isWalking) return;
+        isWalking = true;
+        animator.SetBool("IsWalking", isWalking);
+        var targetPosition = transform.localPosition + transform.forward;
+        Debug.Log("Move forward to " + targetPosition);
+        transform
+            .DOMove(targetPosition, duration)
+            .onKill += () =>
+            {
+                isWalking = false;
+                animator.SetBool("IsWalking", isWalking);
+                onDoneExecuting.Invoke();
+            };
     }
 
     // Metode untuk menghadap ke arah tertentu
     public void FacingTowards(string direction)
     {
+        Vector3 targetRotation = transform.eulerAngles;
         if (direction == "kiri")
         {
-            transform.Rotate(0, -90, 0);
+            targetRotation.y -= 90;
         }
         else if (direction == "kanan")
         {
-            transform.Rotate(0, 90, 0);
+            targetRotation.y += 90;
         }
+
+        transform
+            .DORotate(targetRotation, duration)
+            .onKill += () =>
+            {
+                onDoneExecuting.Invoke();
+            };
     }
 }

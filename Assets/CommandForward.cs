@@ -17,8 +17,7 @@ public class CommandForward : Command
 
     public override void Execute()
     {
-        StartCoroutine(DoneExecuting());
-        playerController.MoveForward(step);
+        playerController.MoveForward();
     }
 
 

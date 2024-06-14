@@ -12,7 +12,6 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     CanvasGroup canvasGroup;
 
     protected PlayerController playerController;
-    public UnityEvent onDoneExecuting;
 
     [HideInInspector]
     public Transform parentAfterDrag;
@@ -57,13 +56,6 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
 
     public virtual void Execute()
     {
-        StartCoroutine(DoneExecuting());
-    }
-
-    public IEnumerator DoneExecuting()
-    {
-        yield return new WaitForSeconds(1);
-        onDoneExecuting.Invoke();
-        Debug.Log("Command executed");
+    
     }
 }

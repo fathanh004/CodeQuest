@@ -21,7 +21,7 @@ public class CommandStart : Command
     [SerializeField]
     GameObject slot;
     List<Command> commandList = new List<Command>();
-    int currentIndex = 0;
+    public int currentIndex = 0;
 
     public void StartAllCommand()
     {
@@ -29,7 +29,6 @@ public class CommandStart : Command
         foreach (Transform child in slot.transform)
         {
             Command command = child.GetComponent<Command>();
-            AddListenerToCommand(command);
             commandList.Add(command);
         }
 
@@ -42,13 +41,7 @@ public class CommandStart : Command
         if (currentIndex < commandList.Count)
         {
             commandList[currentIndex].Execute();
-            currentIndex++;
         }
-    }
-
-    void AddListenerToCommand(Command command)
-    {
-        command.onDoneExecuting.RemoveAllListeners();
-        command.onDoneExecuting.AddListener(ExecuteNextCommand);
+        currentIndex++;
     }
 }
