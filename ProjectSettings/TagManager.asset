@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - StartCommand
+  - Wall
+  - Chest
   layers:
   - Default
   - TransparentFX

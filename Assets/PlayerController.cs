@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     Vector3 initialPosition;
     Quaternion initialRotation;
     bool isWalking = false;
+    bool isRotating = false;
 
     public UnityEvent onDoneExecuting;
 
@@ -61,24 +63,47 @@ public class PlayerController : MonoBehaviour
 
     public void MoveForward()
     {
-        if (isWalking) return;
+        if (isWalking)
+            return;
+
+        var targetPosition = transform.localPosition + transform.forward;
+
+        if (IsFrontTileTagEqual(targetPosition, "Wall"))
+        {
+            Debug.Log("Wall detected");
+            targetPosition = transform.localPosition;
+        }
+
         isWalking = true;
         animator.SetBool("IsWalking", isWalking);
-        var targetPosition = transform.localPosition + transform.forward;
-        Debug.Log("Move forward to " + targetPosition);
-        transform
-            .DOMove(targetPosition, duration)
-            .onKill += () =>
+
+        transform.DOMove(targetPosition, duration).onKill += () =>
+        {
+            isWalking = false;
+            animator.SetBool("IsWalking", isWalking);
+            onDoneExecuting.Invoke();
+        };
+    }
+
+    public bool IsFrontTileTagEqual(Vector3 targetPosition, string tag)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(targetPosition, 0.1f);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag(tag))
             {
-                isWalking = false;
-                animator.SetBool("IsWalking", isWalking);
-                onDoneExecuting.Invoke();
-            };
+                return true;
+            }
+        }
+        return false;
     }
 
     // Metode untuk menghadap ke arah tertentu
     public void FacingTowards(string direction)
     {
+        if (isRotating)
+            return;
+        isRotating = true;
         Vector3 targetRotation = transform.eulerAngles;
         if (direction == "kiri")
         {
@@ -89,11 +114,10 @@ public class PlayerController : MonoBehaviour
             targetRotation.y += 90;
         }
 
-        transform
-            .DORotate(targetRotation, duration)
-            .onKill += () =>
-            {
-                onDoneExecuting.Invoke();
-            };
+        transform.DORotate(targetRotation, duration).onKill += () =>
+        {
+            isRotating = false;
+            onDoneExecuting.Invoke();
+        };
     }
 }
