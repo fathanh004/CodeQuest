@@ -8,6 +8,18 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    static PlayerController instance;
+    public static PlayerController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<PlayerController>();
+            }
+            return instance;
+        }
+    }
     [SerializeField]
     private Animator animator;
 
@@ -18,6 +30,7 @@ public class PlayerController : MonoBehaviour
     Quaternion initialRotation;
     bool isWalking = false;
     bool isRotating = false;
+    Collider collider;
 
     public UnityEvent onDoneExecuting;
 
@@ -25,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+        collider = GetComponent<Collider>();
     }
 
     private void Start()
@@ -85,6 +99,12 @@ public class PlayerController : MonoBehaviour
         };
     }
 
+    public IEnumerator GoalReached()
+    {
+        yield return new WaitForSeconds(2);
+        GameManager.Instance.onGoalReached.Invoke();
+    }
+
     public bool IsFrontTileTagEqual(Vector3 targetPosition, string tag)
     {
         Collider[] hitColliders = Physics.OverlapSphere(targetPosition, 0.1f);
@@ -119,5 +139,14 @@ public class PlayerController : MonoBehaviour
             isRotating = false;
             onDoneExecuting.Invoke();
         };
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Goal"))
+        {
+            Debug.Log("Goal reached");
+            StartCoroutine(GoalReached());
+        }
     }
 }

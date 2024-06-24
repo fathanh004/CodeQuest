@@ -2,9 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+
+    static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
     [SerializeField]
     PlayerController playerController;
 
@@ -16,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     Button restartButton;
+    
+    public UnityEvent onGoalReached;
 
     private void Awake()
     {

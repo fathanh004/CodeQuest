@@ -6,7 +6,7 @@ TagManager:
   tags:
   - StartCommand
   - Wall
-  - Chest
+  - Goal
   layers:
   - Default
   - TransparentFX
