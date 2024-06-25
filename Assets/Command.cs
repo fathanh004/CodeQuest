@@ -17,6 +17,8 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     public Transform parentAfterDrag;
     Color32 currentColor;
 
+    public bool canBeDeleted = true;
+
     public virtual void Awake()
     {
         image = GetComponentInChildren<Image>();

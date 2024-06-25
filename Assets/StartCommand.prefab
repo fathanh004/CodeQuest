@@ -73,11 +73,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0648573744d868743808b50533e5207b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDoneExecuting:
-    m_PersistentCalls:
-      m_Calls: []
   parentAfterDrag: {fileID: 0}
+  canBeDeleted: 0
   slot: {fileID: 2745933604281633617}
+  currentIndex: 0
 --- !u!1 &2745933604281633617
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,21 +10,37 @@ public class CommandGenerator : MonoBehaviour
     public UnityEvent onCommandDraggedOut;
     int currentChildCount = 0;
 
+    public bool isMaxOneCommand = false;
+
     private void Start()
     {
         GenerateCommand();
-        onCommandDraggedOut.AddListener(GenerateCommand);
+        if (!isMaxOneCommand)
+        {
+            onCommandDraggedOut.AddListener(GenerateCommand);
+        }
+        else
+        {
+            GameManager.Instance.onRestart.AddListener(GenerateCommand);
+        }
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (currentChildCount > transform.childCount)
         {
             onCommandDraggedOut.Invoke();
             currentChildCount = transform.childCount;
         }
+
+        if (transform.childCount > 1)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            currentChildCount = transform.childCount;
+        }
     }
 
-    private void GenerateCommand()
+    public void GenerateCommand()
     {
         Instantiate(commandPrefab, transform);
         currentChildCount++;

@@ -72,6 +72,7 @@ public class CommandSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
             }
         }
     }
+    
 
     void IncreaseImageHeight()
     {

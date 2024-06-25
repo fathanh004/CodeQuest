@@ -7,10 +7,10 @@ public class CommandDump : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        GameObject droppedObject = eventData.pointerDrag;
-        if (!droppedObject.CompareTag("StartCommand"))
+        Command draggedCommand = eventData.pointerDrag.GetComponent<Command>();
+        if (draggedCommand.canBeDeleted)
         {
-            Destroy(droppedObject);
+            Destroy(draggedCommand.gameObject);
         }
     }
 

@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     
     public UnityEvent onGoalReached;
 
+    public UnityEvent onRestart;
+
     private void Awake()
     {
         startButton.onClick.AddListener(StartGame);
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     //reload scene
     public void Restart()
     {
+        onRestart.Invoke();
         playerController.ResetPosition();
         foreach (Transform child in commandListGameObject.transform)
         {
