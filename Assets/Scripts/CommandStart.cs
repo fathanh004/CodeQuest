@@ -20,7 +20,7 @@ public class CommandStart : Command
 
     [SerializeField]
     GameObject slot;
-    List<Command> commandList = new List<Command>();
+    public List<Command> commandList = new List<Command>();
     public int currentIndex = 0;
 
     public void StartAllCommand()
@@ -36,6 +36,16 @@ public class CommandStart : Command
         currentIndex = 0;
         CheckRepeatCommand();
         ExecuteNextCommand();
+    }
+
+    public void SetCurrentCommandList()
+    {
+        commandList.Clear();
+        foreach (Transform child in slot.transform)
+        {
+            Command command = child.GetComponent<Command>();
+            commandList.Add(command);
+        }
     }
 
     public void CheckRepeatCommand()
@@ -80,12 +90,10 @@ public class CommandStart : Command
             }
 
             //remove repeat command and closing command
-            commandList.FindAll(x => x is CommandRepeat || x is ClosingCommand).ForEach(x => commandList.Remove(x));
-
+            commandList
+                .FindAll(x => x is CommandRepeat || x is ClosingCommand)
+                .ForEach(x => commandList.Remove(x));
         }
-        
-        
-       
     }
 
     public void ExecuteNextCommand()

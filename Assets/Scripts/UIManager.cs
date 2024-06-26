@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -34,6 +35,13 @@ public class UIManager : MonoBehaviour
 
     bool isPanelShowed = true;
 
+    [Header("Warning Panel")]
+    [SerializeField]
+    GameObject warningPanel;
+
+    [SerializeField]
+    TMP_Text warningText;
+
     public void ShowOrHidePanel()
     {
         var image = hideOrShowButton.GetComponent<Image>();
@@ -59,5 +67,18 @@ public class UIManager : MonoBehaviour
     {
         panel.GetComponent<RectTransform>().DOAnchorPosX(-480, 0.5f);
         isPanelShowed = true;
+    }
+
+    public void ShowWarningPanel(string text)
+    {
+        warningText.text = text;
+        warningPanel.SetActive(true);
+        StartCoroutine(HideWarningPanel());
+    }
+
+    public IEnumerator HideWarningPanel()
+    {
+        yield return new WaitForSeconds(5);
+        warningPanel.SetActive(false);
     }
 }
