@@ -7,10 +7,9 @@ public class CommandDump : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Command draggedCommand = eventData.pointerDrag.GetComponent<Command>();
-        if (draggedCommand.canBeDeleted)
+        if (eventData.pointerDrag.TryGetComponent<Command>(out var draggedCommand))
         {
-            Destroy(draggedCommand.gameObject);
+            draggedCommand.DestroyCommand();
         }
     }
 

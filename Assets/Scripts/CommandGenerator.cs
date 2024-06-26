@@ -2,47 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class CommandGenerator : MonoBehaviour
 {
     public GameObject commandPrefab;
 
+    public GameObject content;
+
+    public TMP_Text allowedCommandsText;
+
     public UnityEvent onCommandDraggedOut;
     int currentChildCount = 0;
 
-    public bool isMaxOneCommand = false;
+    public int maxCommands = 1;
+
+    public int currentCommands = 0;
+    int allowedCommands;
 
     private void Start()
     {
+        allowedCommands = maxCommands;
         GenerateCommand();
-        if (!isMaxOneCommand)
-        {
-            onCommandDraggedOut.AddListener(GenerateCommand);
-        }
-        else
-        {
-            GameManager.Instance.onRestart.AddListener(GenerateCommand);
-        }
+
+        onCommandDraggedOut.AddListener(() => UpdateAllowedCommandsText(-1));
+        onCommandDraggedOut.AddListener(GenerateCommand);
+        GameManager.Instance.onRestart.AddListener(RefreshCommands);
+        UpdateAllowedCommandsText(0);
+    }
+
+    public void RefreshCommands()
+    {
+        currentCommands = 0;
+        GenerateCommand();
     }
 
     private void Update()
     {
-        if (currentChildCount > transform.childCount)
+        if (currentChildCount > content.transform.childCount)
         {
             onCommandDraggedOut.Invoke();
-            currentChildCount = transform.childCount;
+            currentChildCount = content.transform.childCount;
         }
+    }
 
-        if (transform.childCount > 1)
-        {
-            Destroy(transform.GetChild(0).gameObject);
-            currentChildCount = transform.childCount;
-        }
+    public void UpdateAllowedCommandsText(int number)
+    {
+        allowedCommands += number;
+        allowedCommandsText.text = allowedCommands + "/" + maxCommands;
     }
 
     public void GenerateCommand()
     {
-        Instantiate(commandPrefab, transform);
-        currentChildCount++;
+        if (content.transform.childCount > 0)
+            return;
+
+        if (currentCommands < maxCommands)
+        {
+            GameObject command = Instantiate(commandPrefab, content.transform);
+            command.GetComponent<Command>().commandGenerator = this;
+            command.transform.SetSiblingIndex(0);
+            currentCommands++;
+            currentChildCount = content.transform.childCount;
+        }
     }
 }

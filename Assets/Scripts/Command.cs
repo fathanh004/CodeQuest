@@ -17,6 +17,8 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     public Transform parentAfterDrag;
     Color32 currentColor;
 
+    public CommandGenerator commandGenerator;
+
     public bool canBeDeleted = true;
 
     public virtual void Awake()
@@ -40,6 +42,17 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         canvasGroup.blocksRaycasts = false;
+    }
+
+    public void DestroyCommand()
+    {
+        if (canBeDeleted)
+        {
+            Destroy(gameObject);
+            commandGenerator.currentCommands--;
+            commandGenerator.UpdateAllowedCommandsText(1);
+            commandGenerator.GenerateCommand();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

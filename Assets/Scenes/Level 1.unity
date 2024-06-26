@@ -6006,7 +6006,8 @@ MonoBehaviour:
   onCommandDraggedOut:
     m_PersistentCalls:
       m_Calls: []
-  isMaxOneCommand: 0
+  maxCommands: 10
+  currentCommands: 0
 --- !u!114 &872106856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11867,7 +11868,8 @@ MonoBehaviour:
   onCommandDraggedOut:
     m_PersistentCalls:
       m_Calls: []
-  isMaxOneCommand: 0
+  maxCommands: 10
+  currentCommands: 0
 --- !u!114 &1598785109
 MonoBehaviour:
   m_ObjectHideFlags: 0

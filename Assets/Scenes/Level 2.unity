@@ -207,7 +207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &38764713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -744,7 +744,8 @@ MonoBehaviour:
   onCommandDraggedOut:
     m_PersistentCalls:
       m_Calls: []
-  isMaxOneCommand: 0
+  maxCommands: 4
+  currentCommands: 0
 --- !u!1001 &118885975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11929,7 +11930,8 @@ MonoBehaviour:
   onCommandDraggedOut:
     m_PersistentCalls:
       m_Calls: []
-  isMaxOneCommand: 0
+  maxCommands: 1
+  currentCommands: 0
 --- !u!114 &1598785109
 MonoBehaviour:
   m_ObjectHideFlags: 0
