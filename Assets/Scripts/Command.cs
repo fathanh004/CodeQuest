@@ -55,6 +55,35 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         }
     }
 
+    private void Update() {
+        //check if the command is overlapping with other commands
+        bool overlapping = false;
+
+        
+    }
+
+    public bool IsOverlapping(RectTransform rect1, RectTransform rect2)
+    {
+        if (rect1 == null || rect2 == null)
+            return false;
+
+        Rect rect1World = GetWorldRect(rect1);
+        Rect rect2World = GetWorldRect(rect2);
+
+        return rect1World.Overlaps(rect2World);
+    }
+
+    public Rect GetWorldRect(RectTransform rectTransform)
+    {
+        Vector3[] corners = new Vector3[4];
+        rectTransform.GetWorldCorners(corners);
+
+        float width = Vector3.Distance(corners[0], corners[3]);
+        float height = Vector3.Distance(corners[0], corners[1]);
+
+        return new Rect(corners[0].x, corners[0].y, width, height);
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta;
