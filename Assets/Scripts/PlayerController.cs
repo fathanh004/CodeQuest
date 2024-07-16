@@ -53,20 +53,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            MoveForward();
-        }
+        // if (Input.GetKeyDown(KeyCode.W))
+        // {
+        //     MoveForward();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            FacingTowards("kiri");
-        }
+        // if (Input.GetKeyDown(KeyCode.A))
+        // {
+        //     FacingTowards("kiri");
+        // }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            FacingTowards("kanan");
-        }
+        // if (Input.GetKeyDown(KeyCode.D))
+        // {
+        //     FacingTowards("kanan");
+        // }
     }
 
     // Metode untuk mengatur ulang posisi pemain dan rotasi
@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Goal"))
         {
             Debug.Log("Goal reached");
+            CommandStart.Instance.isGameFinished = true;
             StartCoroutine(GoalReached());
         }
     }

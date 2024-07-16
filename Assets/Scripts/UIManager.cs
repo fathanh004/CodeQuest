@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject panel;
 
+    [SerializeField]
+    GameObject missionGoalPanel;
+
     [Header("Hide or Show Button")]
     [SerializeField]
     GameObject hideOrShowButton;

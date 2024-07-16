@@ -44,6 +44,11 @@ public class CommandGenerator : MonoBehaviour
             onCommandDraggedOut.Invoke();
             currentChildCount = content.transform.childCount;
         }
+
+        if (content.transform.childCount > 1)
+        {
+            content.transform.GetChild(0).GetComponent<Command>().DestroyCommand();
+        }
     }
 
     public void UpdateAllowedCommandsText(int number)

@@ -22,6 +22,7 @@ public class CommandStart : Command
     GameObject slot;
     public List<Command> commandList = new List<Command>();
     public int currentIndex = 0;
+    public bool isGameFinished = false;
 
     public void StartAllCommand()
     {
@@ -98,6 +99,11 @@ public class CommandStart : Command
 
     public void ExecuteNextCommand()
     {
+        if (isGameFinished)
+        {
+            return;
+        }
+
         if (currentIndex < commandList.Count)
         {
             commandList[currentIndex].Execute();
