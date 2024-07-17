@@ -33,8 +33,15 @@ public class CommandGenerator : MonoBehaviour
 
     public void RefreshCommands()
     {
-        currentCommands = 0;
+
         GenerateCommand();
+        if (currentCommands != 1)
+        {
+            currentCommands = 1;
+        }
+
+        allowedCommands = maxCommands;
+        UpdateAllowedCommandsText(0);
     }
 
     private void Update()
