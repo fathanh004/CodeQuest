@@ -106,7 +106,8 @@ public class GameManager : MonoBehaviour
                 "\"Batas Perulangan\" tidak dapat digunakan tanpa perulangan!"
             );
             return false;
-        } else if (repeatCommandIndex > closingCommandIndex)
+        }
+        else if (repeatCommandIndex > closingCommandIndex)
         {
             UIManager.Instance.ShowWarningPanel(
                 "Batas perulangan harus diletakkan setelah perulangan!"
@@ -116,5 +117,15 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(repeatCommandIndex + " " + closingCommandIndex);
         return true;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 }
