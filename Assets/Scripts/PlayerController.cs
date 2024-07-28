@@ -53,20 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.W))
-        // {
-        //     MoveForward();
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.A))
-        // {
-        //     FacingTowards("kiri");
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.D))
-        // {
-        //     FacingTowards("kanan");
-        // }
+        
     }
 
     // Metode untuk mengatur ulang posisi pemain dan rotasi

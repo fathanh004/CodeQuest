@@ -118,14 +118,4 @@ public class GameManager : MonoBehaviour
         Debug.Log(repeatCommandIndex + " " + closingCommandIndex);
         return true;
     }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1;
-    }
 }
