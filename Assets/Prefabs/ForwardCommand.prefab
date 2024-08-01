@@ -135,10 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf6284b74ff3544bbeed4dad3f2d037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDoneExecuting:
-    m_PersistentCalls:
-      m_Calls: []
   parentAfterDrag: {fileID: 0}
+  commandGenerator: {fileID: 0}
+  canBeDeleted: 1
   step: 1
   labelText: {fileID: 7929600519475580666}
 --- !u!225 &7305334143716415634
@@ -221,7 +220,7 @@ MonoBehaviour:
   m_text: Maju 1 langkah
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4dab3dbf7954868458bf8a7d56f242cc, type: 2}
-  m_sharedMaterial: {fileID: -5331251086803102845, guid: 4dab3dbf7954868458bf8a7d56f242cc, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 657c3e5f04d870d4bba5efe5ce97e0f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
