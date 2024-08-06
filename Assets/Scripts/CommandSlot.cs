@@ -78,7 +78,7 @@ public class CommandSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
     {
         image.rectTransform.sizeDelta = new Vector2(
             image.rectTransform.sizeDelta.x,
-            image.rectTransform.sizeDelta.y + 80
+            image.rectTransform.sizeDelta.y + 65
         );
         Hide();
     }
@@ -87,7 +87,7 @@ public class CommandSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IP
     {
         image.rectTransform.sizeDelta = new Vector2(
             image.rectTransform.sizeDelta.x,
-            image.rectTransform.sizeDelta.y - 80
+            image.rectTransform.sizeDelta.y - 65
         );
     }
 

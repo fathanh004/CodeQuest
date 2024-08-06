@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,7 +32,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Button restartButton;
 
+    [SerializeField]
+    WinPanel winPanel;
+
+    int starCount = 0;
+    float timePassed = 0;
+    bool isGameFinished = false;
+
     public UnityEvent onGoalReached;
+
+    public UnityEvent onStarCollected;
 
     public UnityEvent onRestart;
 
@@ -46,6 +56,15 @@ public class GameManager : MonoBehaviour
             CommandStart.Instance.StartAllCommand();
             startButton.gameObject.SetActive(false);
             restartButton.gameObject.SetActive(true);
+        });
+        onGoalReached.AddListener(() =>
+        {
+            isGameFinished = true;
+            winPanel.ShowWinPanel(starCount, timePassed);
+        });
+        onStarCollected.AddListener(() =>
+        {
+            starCount++;
         });
     }
 
@@ -64,10 +83,19 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        timePassed = 0;
         if (RepeatCommandChecker())
         {
             Debug.Log(RepeatCommandChecker());
             onStart.Invoke();
+        }
+    }
+
+    private void Update()
+    {
+        if (!isGameFinished)
+        {
+            timePassed += Time.deltaTime;
         }
     }
 
