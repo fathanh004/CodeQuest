@@ -15,6 +15,13 @@ public class WinPanel : MonoBehaviour
     [SerializeField]
     TMP_Text timeText;
 
+    public void SaveLevelData(int starCount, float time)
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetInt(currentSceneName + "_Stars", starCount);
+        PlayerPrefs.SetFloat(currentSceneName + "_Time", time);
+    }
+
     public void ShowWinPanel(int starCount, float time)
     {
         levelText.text = SceneManager.GetActiveScene().name;
@@ -26,6 +33,7 @@ public class WinPanel : MonoBehaviour
         }
 
         gameObject.SetActive(true);
+        SaveLevelData(starCount, time);
     }
 
     public void NextLevel()
