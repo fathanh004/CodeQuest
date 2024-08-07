@@ -18,8 +18,17 @@ public class WinPanel : MonoBehaviour
     public void SaveLevelData(int starCount, float time)
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-        PlayerPrefs.SetInt(currentSceneName + "_Stars", starCount);
-        PlayerPrefs.SetFloat(currentSceneName + "_Time", time);
+        int currentStarCount = PlayerPrefs.GetInt(currentSceneName + "_Stars", 0);
+        float currentTime = PlayerPrefs.GetFloat(currentSceneName + "_Time", 0);
+
+        if (starCount > currentStarCount)
+        {
+            PlayerPrefs.SetInt(currentSceneName + "_Stars", starCount);
+        }
+        if (time < currentTime || currentTime == 0)
+        {
+            PlayerPrefs.SetFloat(currentSceneName + "_Time", time);
+        }
     }
 
     public void ShowWinPanel(int starCount, float time)

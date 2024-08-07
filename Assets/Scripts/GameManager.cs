@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     float timePassed = 0;
     bool isGameFinished = false;
 
+    [SerializeField]
+    GameObject[] starsGameObject;
+
     public UnityEvent onGoalReached;
 
     public UnityEvent onStarCollected;
@@ -47,8 +50,12 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent onStart;
 
+    AudioSource audioSource;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(Restart);
         onStart.AddListener(() =>
@@ -64,8 +71,24 @@ public class GameManager : MonoBehaviour
         });
         onStarCollected.AddListener(() =>
         {
+            audioSource.Play();
             starCount++;
         });
+        onRestart.AddListener(() =>
+        {
+            isGameFinished = false;
+            ResetStar();
+            timePassed = 0;
+        });
+    }
+
+    public void ResetStar()
+    {
+        starCount = 0;
+        foreach (GameObject star in starsGameObject)
+        {
+            star.SetActive(true);
+        }
     }
 
     //reload scene

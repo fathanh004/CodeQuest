@@ -33,7 +33,7 @@ public class CommandGenerator : MonoBehaviour
 
     public void RefreshCommands()
     {
-
+        currentCommands = 0;
         GenerateCommand();
         if (currentCommands != 1)
         {
