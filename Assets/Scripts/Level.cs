@@ -13,15 +13,20 @@ public class Level : MonoBehaviour
 
     float timePassed;
 
+    public bool isCleared;
+
     [SerializeField] TMP_Text levelText;
 
     [SerializeField] GameObject[] stars;
 
     [SerializeField] Button playButton;
 
+    public GameObject lockedPanel;
+
     private void Awake() {
         starCount = PlayerPrefs.GetInt("Level " + level + "_Stars", 0);
         timePassed = PlayerPrefs.GetFloat("Level " + level + "_Time", 0);
+        isCleared = PlayerPrefs.GetInt("Level " + level + "_Cleared", 0) == 1;  
     }
 
     private void Start()

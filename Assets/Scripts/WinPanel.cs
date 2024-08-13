@@ -29,6 +29,8 @@ public class WinPanel : MonoBehaviour
         {
             PlayerPrefs.SetFloat(currentSceneName + "_Time", time);
         }
+
+        PlayerPrefs.SetInt(currentSceneName + "_Cleared", 1);
     }
 
     public void ShowWinPanel(int starCount, float time)
