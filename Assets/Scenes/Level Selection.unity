@@ -1227,6 +1227,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 615803942}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadScene
@@ -2429,7 +2441,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 621830700}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &621830700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,7 +2648,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 654056288}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &654056288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2896,7 +2932,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 719342436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &719342436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4237,7 +4285,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1009178332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1009178332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7055,7 +7115,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1533787945}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1533787945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7175,7 +7247,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1538554664}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1538554664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7825,7 +7909,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1653532713}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1653532713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8808,7 +8904,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1781417035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1781417035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9063,7 +9171,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1850925857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1850925857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9183,7 +9303,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1865716688}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1968409735}
+        m_TargetAssemblyTypeName: SFXButtonManager, Assembly-CSharp
+        m_MethodName: PlaySFXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1865716688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9509,6 +9641,50 @@ MonoBehaviour:
   - {fileID: 1681820875}
   playButton: {fileID: 1850925856}
   lockedPanel: {fileID: 563263231}
+--- !u!1 &1968409734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1968409736}
+  - component: {fileID: 1968409735}
+  m_Layer: 0
+  m_Name: SFXButtonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1968409735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968409734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 096bafb0a08d815468a2e976dede1f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1968409736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968409734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 921.96436, y: 559.55066, z: -8.714185}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1996067495
 GameObject:
   m_ObjectHideFlags: 0
@@ -10529,3 +10705,4 @@ SceneRoots:
   - {fileID: 1774679882}
   - {fileID: 615803943}
   - {fileID: 1434589191}
+  - {fileID: 1968409736}
