@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class Command
+    : MonoBehaviour,
+        IDragHandler,
+        IBeginDragHandler,
+        IEndDragHandler,
+        IPointerEnterHandler,
+        IDropHandler
 {
     RectTransform rectTransform;
     Image image;
@@ -20,6 +27,8 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
     public CommandGenerator commandGenerator;
 
     public bool canBeDeleted = true;
+
+    public int indexer = -1;
 
     public virtual void Awake()
     {
@@ -55,13 +64,6 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         }
     }
 
-    private void Update() {
-        //check if the command is overlapping with other commands
-        bool overlapping = false;
-
-        
-    }
-
     public bool IsOverlapping(RectTransform rect1, RectTransform rect2)
     {
         if (rect1 == null || rect2 == null)
@@ -84,6 +86,56 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         return new Rect(corners[0].x, corners[0].y, width, height);
     }
 
+    private bool IsThisCommandInsideCommandSlot()
+    {
+        //check if this command is a child of a command slot
+        if (transform.parent.TryGetComponent<CommandSlot>(out var commandSlot))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        GameObject draggedObject = eventData.pointerDrag;
+        if (draggedObject != null)
+        {
+            if (
+                draggedObject.TryGetComponent<Command>(out var command)
+                && !this.gameObject.CompareTag("StartCommand")
+                && IsThisCommandInsideCommandSlot()
+            )
+            {
+                if (command != this)
+                {
+                    Debug.Log(draggedObject.name + " is over " + name + " index: " + transform.GetSiblingIndex());
+                }
+            }
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        GameObject droppedObject = eventData.pointerDrag;
+        if (droppedObject != null)
+        {
+            if (
+                droppedObject.TryGetComponent<Command>(out var command)
+                && !this.gameObject.CompareTag("StartCommand")
+                && IsThisCommandInsideCommandSlot()
+            )
+            {
+                Debug.Log(droppedObject.name + " dropped on " + name + " index: " + transform.GetSiblingIndex());
+                command.indexer = transform.GetSiblingIndex();
+                command.parentAfterDrag = transform.parent;
+            }
+        }
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta;
@@ -96,10 +148,12 @@ public class Command : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragH
         image.color = currentColor;
         transform.SetParent(parentAfterDrag);
         canvasGroup.blocksRaycasts = true;
+        if (indexer != -1)
+        {
+            transform.SetSiblingIndex(indexer);
+            indexer = -1;
+        }
     }
 
-    public virtual void Execute()
-    {
-    
-    }
+    public virtual void Execute() { }
 }
