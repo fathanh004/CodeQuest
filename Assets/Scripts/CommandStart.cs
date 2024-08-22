@@ -23,9 +23,11 @@ public class CommandStart : Command
     public List<Command> commandList = new List<Command>();
     public int currentIndex = 0;
     public bool isGameFinished = false;
+    public bool isExecuting = false;
 
     public void StartAllCommand()
     {
+        isExecuting = true;
         UIManager.Instance.HidePanel();
         commandList.Clear();
         foreach (Transform child in slot.transform)
@@ -110,6 +112,7 @@ public class CommandStart : Command
         }
         else
         {
+            isExecuting = false;
             UIManager.Instance.ShowPanel();
         }
         currentIndex++;

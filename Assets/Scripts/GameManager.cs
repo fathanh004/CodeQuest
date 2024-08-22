@@ -94,6 +94,11 @@ public class GameManager : MonoBehaviour
     //reload scene
     public void Restart()
     {
+        if (CommandStart.Instance.isExecuting)
+        {
+            return;
+        }
+
         onRestart.Invoke();
         playerController.ResetPosition();
         foreach (Transform child in commandListGameObject.transform)
