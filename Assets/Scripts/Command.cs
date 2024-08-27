@@ -12,7 +12,8 @@ public class Command
         IBeginDragHandler,
         IEndDragHandler,
         IPointerEnterHandler,
-        IDropHandler
+        IDropHandler,
+        IPointerExitHandler
 {
     RectTransform rectTransform;
     Image image;
@@ -112,7 +113,42 @@ public class Command
             {
                 if (command != this)
                 {
-                    Debug.Log(draggedObject.name + " is over " + name + " index: " + transform.GetSiblingIndex());
+                    Debug.Log(
+                        draggedObject.name
+                            + " is over "
+                            + name
+                            + " index: "
+                            + transform.GetSiblingIndex()
+                    );
+                    currentColor.a = 100;
+                    image.color = currentColor;
+                }
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        GameObject draggedObject = eventData.pointerDrag;
+        if (draggedObject != null)
+        {
+            if (
+                draggedObject.TryGetComponent<Command>(out var command)
+                && !this.gameObject.CompareTag("StartCommand")
+                && IsThisCommandInsideCommandSlot()
+            )
+            {
+                if (command != this)
+                {
+                    Debug.Log(
+                        draggedObject.name
+                            + " is over "
+                            + name
+                            + " index: "
+                            + transform.GetSiblingIndex()
+                    );
+                    currentColor.a = 255;
+                    image.color = currentColor;
                 }
             }
         }
@@ -129,9 +165,17 @@ public class Command
                 && IsThisCommandInsideCommandSlot()
             )
             {
-                Debug.Log(droppedObject.name + " dropped on " + name + " index: " + transform.GetSiblingIndex());
+                Debug.Log(
+                    droppedObject.name
+                        + " dropped on "
+                        + name
+                        + " index: "
+                        + transform.GetSiblingIndex()
+                );
                 command.indexer = transform.GetSiblingIndex();
                 command.parentAfterDrag = transform.parent;
+                currentColor.a = 255;
+                image.color = currentColor;
             }
         }
     }
