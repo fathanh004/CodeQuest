@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         if (IsFrontTileTagEqual(targetPosition, "Wall"))
         {
             Debug.Log("Wall detected");
+            UIManager.Instance.ShowWarningPanel("Anda sedang berjalan di tempat!");
             targetPosition = transform.localPosition;
         }
 

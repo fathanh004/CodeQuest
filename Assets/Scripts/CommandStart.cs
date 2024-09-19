@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CommandStart : Command
 {
@@ -24,6 +25,20 @@ public class CommandStart : Command
     public int currentIndex = 0;
     public bool isGameFinished = false;
     public bool isExecuting = false;
+    public UnityEvent allCommandExecuted;
+
+    private void Awake()
+    {
+        allCommandExecuted.AddListener(() =>
+        {
+            if (!isGameFinished)
+            {
+                UIManager.Instance.ShowWarningPanel(
+                    "Goal tidak tercapai, ulangi dan buat algoritma yang benar!"
+                );
+            }
+        });
+    }
 
     public void StartAllCommand()
     {
@@ -112,6 +127,7 @@ public class CommandStart : Command
         }
         else
         {
+            allCommandExecuted.Invoke();
             isExecuting = false;
             UIManager.Instance.ShowPanel();
         }
